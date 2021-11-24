@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Быстрый старт. Размещение интерактивной карты на странице</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=8183f928-9ace-4247-8819-157004c9caf0&lang=ru_RU" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        ymaps.ready(init);
+        function init(){
+            var myMap = new ymaps.Map("map", {
+                center: [54.193122, 37.617348],
+                zoom: 15,
+                controls:['zoomControl'],
+                behaviors:['drag']
+            });
+            var placemark = new ymaps.Placemark([54.193122, 37.617348],
+                {});
+            myMap.geoObjects.add(new ymaps.Placemark([54.193122, 37.617348], {
+                balloonContent: 'цвет <strong>воды пляжа бонди</strong>',
+                hintContent:'<div><img src="jpg.jpg" alt=""></div>'
+            }, {
+                preset: 'islands#icon',
+                iconColor: '#0095b6',
+                iconLayout: 'default#image',
+                iconImageHref: 'jpg.jpg',
+                iconImageSize: [40,40]
+            }));
+        }
+    </script>
+</head>
+
+<body>
+<div id="map" style="width: 600px; height: 400px"></div>
+</body>
+
+</html>
